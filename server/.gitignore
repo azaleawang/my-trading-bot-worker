@@ -1,0 +1,3 @@
+.env
+trade/config.py
+*.log
