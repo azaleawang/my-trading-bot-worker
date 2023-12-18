@@ -189,7 +189,8 @@ def execute_buy_trade(exchange, symbol, amount_in_usdt=amount_in_usdt):
         order = exchange.create_market_buy_order(
             symbol, amount_in_usdt / exchange.fetch_ticker(symbol)["last"]
         )
-        log_write(order)
+        # log_write(order)
+        log_write("Buy order done")
         in_position = True
         quantity_sell = order["info"]["executedQty"]
         asyncio.run(
@@ -216,7 +217,8 @@ def execute_sell_trade(exchange, symbol, quantity):
     global in_position
     try:
         order = exchange.create_market_sell_order(symbol, quantity)
-        log_write(order)
+        # log_write(order)
+        log_write("Sell order done")
         in_position = False
         asyncio.run(
             send_message(
