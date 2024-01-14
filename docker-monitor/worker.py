@@ -1,5 +1,5 @@
 """
-Check the docker container states regularly (every 1 min?)
+Check the docker container states regularly
 """
 
 import json
@@ -15,7 +15,6 @@ load_dotenv()
 
 def fetch_all_containers():
     try:
-        # TODO 依照server的container list來fetch 不要抓全部的bot container
         url = f"{os.getenv('HOSTNAME')}/api/v1/bots/admin"
         response = requests.get(url)
         return response.json().get("data", [])
@@ -97,7 +96,6 @@ def get_last_container_logs(container_id_or_name: str, line_count: int = 5) -> l
 if __name__ == "__main__":
     while True:
         data_to_server = []
-        # TODO 如果有做成的話就記得fetch所在server擁有的container 即可
         container_list = fetch_all_containers()
         if not container_list:
             print("No containers found")

@@ -302,4 +302,3 @@ if __name__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(1)
-        # TODO if stopped bot, sell all remains or do nothing?
